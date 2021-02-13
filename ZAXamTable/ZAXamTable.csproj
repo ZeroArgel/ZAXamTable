@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZAXamTable</RootNamespace>
+    <AssemblyName>ZAXamTable</AssemblyName>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <PackageId>ZAXamTable</PackageId>
+    <Authors>Kevin Perez</Authors>
+    <Company>ZeroArgel</Company>
+    <Product>ZAXamTable</Product>
+    <Description>
+      ZAXamTable is a free project to create datatable more easier.
+
+      This part is in .xaml.
+      &lt;Grid Grid.Row="3"
+      x:Name="ZATable"
+      HorizontalOptions="CenterAndExpand"
+      Padding="10,30,10,0">
+      &lt;Grid.RowDefinitions>
+      &lt;RowDefinition Height="auto"/>
+      &lt;RowDefinition Height="auto"/>
+      &lt;/Grid.RowDefinitions>
+      &lt;Grid Grid.Row="0"
+      x:Name="ZAHeader"
+      BackgroundColor="LightBlue"/>
+      &lt;ScrollView Grid.Row="1"
+      Orientation="Vertical"
+      HeightRequest="400">
+      &lt;Grid x:Name="ZASource" />
+      &lt;/ScrollView>
+      &lt;/Grid>
+
+      This is in xaml.cs example.
+
+      var listZAHeaders = new List&lt;ZAHeaders>();
+      var listZASources = new List&lt;ZASources>();
+
+      #region declaration headers.
+      var header1 = new ZAHeaders("Header 1", new ZAPosition(0, 0));
+      var header2 = new ZAHeaders("Header 2", new ZAPosition(0, 1));
+      var header3 = new ZAHeaders("Header 3", new ZAPosition(0, 2));
+      listZAHeaders.Add(header1);
+      listZAHeaders.Add(header2);
+      listZAHeaders.Add(header3);
+      #endregion
+      #region declaration sources.
+      for(int i = 0; i &lt; 50; i++) // Rows
+      {
+        for(int j = 0; j &lt; 3; j++) // Columns
+        {
+          listZASources.Add(new ZASources("Data " + (i+1), new ZAPosition(i, j)));
+        }
+      }
+      #endregion
+      ZAHeader.ToHeader(listZAHeaders);
+      ZASource.ToSource(listZASources);
+    </Description>
+    <PackageIcon>Logo.png</PackageIcon>
+    <Copyright>Zero Argel - 2020</Copyright>
+    <PackageLicenseFile>Licence.txt</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Licence.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
